@@ -40,9 +40,9 @@ const C = {
 // ---------- Theme (colors from pavletosic.com) ----------
 const THEMES = {
   light: { ink: "#0a0a0a", muted: "#71717a", faint: "#a1a1aa", line: "#e4e4e7", bar: "#a1a1aa", accent: "#00bb7f",
-    heroMuted: "#52525b", wash: "rgba(255,255,255,.92)", wash2: "rgba(255,255,255,.55)" },
+    heroMuted: "#52525b", wash: "rgba(255,255,255,.92)", wash2: "rgba(255,255,255,.45)" },
   dark: { ink: "#fafafa", muted: "#a1a1aa", faint: "#71717a", line: "#27272a", bar: "#71717a", accent: "#00bb7f",
-    heroMuted: "#c4c4cc", wash: "rgba(10,10,10,.88)", wash2: "rgba(10,10,10,.45)" },
+    heroMuted: "#c4c4cc", wash: "rgba(10,10,10,.88)", wash2: "rgba(10,10,10,.35)" },
 };
 // Hero background: the "film" images from pavletosic.com (src/images/film-*.webp).
 const HERO = {};
@@ -113,13 +113,13 @@ function main(data) {
     }
   });
   return {
-    height: 470,
+    height: 580,
     hero: true,
     text: C.intro.join(" "),
     weights: [400],
-    css: `.w{display:flex;flex-direction:column;justify-content:space-between;padding:20px 0 6px}
-      .hero{position:relative;height:300px;border-radius:12px;overflow:hidden;background:var(--img) 75% 30%/cover no-repeat}
-      .hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--wash) 0%,var(--wash2) 40%,transparent 70%)}
+    css: `.w{display:flex;flex-direction:column;justify-content:space-between;padding:0 0 6px}
+      .hero{position:relative;height:430px;border-radius:12px;overflow:hidden;background:var(--img) 75% 30%/cover no-repeat}
+      .hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--wash) 0%,var(--wash2) 35%,transparent 62%)}
       .i{position:absolute;z-index:1;left:28px;bottom:26px;width:50%;font-size:22px;line-height:29px;letter-spacing:-.015em}
       .i .m{color:var(--heroMuted)}
       @media(max-width:620px){.hero:after{background:linear-gradient(0deg,var(--wash) 0%,var(--wash2) 50%,transparent 85%)}
@@ -207,7 +207,6 @@ const add = async (name, section, alt, href) => {
   lines.push(href ? `<a href="${href}">${p}</a>` : p);
 };
 
-await add("top", top(), `${C.name} — ${C.role} — ${C.place}`);
 await add("main", main(data), `${C.intro.join(" ")}`);
 await add("about-head", heading("About", "pavletosic.com/about"), "About", `${SITE}/about`);
 await add("about", facts(), C.facts.map(([k, v]) => `${k}: ${v}`).join(". "));
